@@ -28,5 +28,10 @@ public class TaskService {
         taskRepository.deleteById(id);
         return true;
     }
+    public Task createTask(Task task) {
+        Task savedTask = taskRepository.save(task);
+        System.out.println("📝 Tarea creada: " + savedTask.getTitle());
+        return savedTask;
+    }
 
 }

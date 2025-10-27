@@ -32,4 +32,8 @@ public class TaskController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PostMapping
+    public Task createTask(@RequestBody Task task) {
+        return taskService.createTask(task);
+    }
 }
