@@ -1,7 +1,8 @@
 package org.taskmanager.taskmanagerback.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "tasks")
@@ -14,8 +15,8 @@ public class Task {
     private String title;
     private String description;
 
-    @Column(name = "due_date")
-    private LocalDateTime dueDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dueDate;
 
     private String tag;
     private String status;
@@ -24,7 +25,7 @@ public class Task {
     public Task() {}
 
     // Constructor con parámetros
-    public Task(String title, String description, LocalDateTime dueDate, String tag, String status) {
+    public Task(String title, String description, LocalDate dueDate, String tag, String status) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
@@ -57,11 +58,11 @@ public class Task {
         this.description = description;
     }
 
-    public LocalDateTime getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDateTime dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
