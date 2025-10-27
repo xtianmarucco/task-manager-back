@@ -20,4 +20,13 @@ public class TaskService {
         System.out.println("📦 Tareas encontradas: " + tasks.size());
         return tasks;    }
 
+    public boolean deleteTask(Long id) {
+        // Check existence first
+        if (!taskRepository.existsById(id)) {
+            return false;
+        }
+        taskRepository.deleteById(id);
+        return true;
+    }
+
 }

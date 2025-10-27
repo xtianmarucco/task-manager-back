@@ -1,8 +1,8 @@
 package org.taskmanager.taskmanagerback.controller;
 
-
 import org.taskmanager.taskmanagerback.model.Task;
 import org.taskmanager.taskmanagerback.service.TaskService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,5 +21,15 @@ public class TaskController {
     @GetMapping
     public List<Task> getAllTasks() {
         return taskService.getAllTasks();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
+        boolean deleted = taskService.deleteTask(id);
+        if (deleted) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
