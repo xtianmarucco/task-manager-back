@@ -1,4 +1,4 @@
-package org.taskmanager.taskmanagerback.config;
+package org.taskmanager.taskmanagerback.service;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.boot.CommandLineRunner;
@@ -44,7 +44,15 @@ public class DataInitializer {
                         "UX/UI Designer"
                 );
 
-                userRepository.saveAll(List.of(user1, user2, user3, user4));
+                User user5 = new User(
+                        "pepe.grillo@hotmail.com",
+                        passwordEncoder.encode("1234asdf"),
+                        "Pepe grillo",
+                        "UX/UI Designer"
+                );
+
+
+                userRepository.saveAll(List.of(user1, user2, user3, user5));
 
                 System.out.println("✅ Usuarios de prueba insertados correctamente con contraseñas encriptadas.");
             } else {
