@@ -34,4 +34,18 @@ public class TaskService {
         return savedTask;
     }
 
+    public List<Task> getFilteredTasks(String status, String title) {
+        if (status != null && title != null) {
+            return taskRepository.findByStatusAndTitleContainingIgnoreCase(status, title);
+        } else if (status != null) {
+            return taskRepository.findByStatus(status);
+        } else if (title != null) {
+            return taskRepository.findByTitleContainingIgnoreCase(title);
+        } else {
+            return taskRepository.findAll();
+        }
+
+    }
+
+
 }
